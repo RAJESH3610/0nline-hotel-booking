@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><title> Hotel Booking </title>
+<link rel="shortcut icon" href="title.ico">
+<script>
+
+       function startTime()
+       {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById("time").innerHTML =
+            h + ":" + m + ":" + s ;
+            var t = setTimeout(startTime, 500);
+       }
+       function checkTime(i) 
+       {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+      }
+
+      function BookHotel()
+      {
+      	name=document.getElementById("txtName").value;
+	dName=document.getElementById("dName");
+	dName.innerHTML=""+name;
+
+      	email=document.getElementById("txtEmail").value;
+	dEmail=document.getElementById("dEmail");
+	dEmail.innerHTML=""+email;
+
+      	mob=document.getElementById("txtMob").value;
+	dMob=document.getElementById("dMob");
+	dMob.innerHTML=""+mob;
+
+      	date=document.getElementById("date").value;
+	dDate=document.getElementById("dDate");
+	dDate.innerHTML=""+date;
+
+      	duration=document.getElementById("txtDuration").value;
+	dDuration=document.getElementById("dDuration");
+	dDuration.innerHTML=""+duration;
+
+	deluxe=document.getElementById("optDeluxe");
+	sDeluxe=document.getElementById("optSDeluxe");
+	suite=document.getElementById("optSuite");
+	locker=document.getElementById("optLocker");
+	ac=document.getElementById("optAc");
+
+	if(deluxe.checked)
+	{
+	     cost=2500*duration;
+	     roomType=deluxe.value;
+	}
+	if(sDeluxe.checked)
+	{
+	     cost=3300*duration;
+	     roomType=sDeluxe.value;
+	}
+	if(suite.checked)
+	{
+	     cost=4000*duration;
+	     roomType=suite.value;
+	}
+	if(locker.checked)
+	{
+	     lcost=200*duration;
+	     cost=cost+lcost;
+	}
+	if(ac.checked)
+	{
+	     accost=500*duration;
+	     cost=cost+accost;
+	}
+
+	room=document.getElementById("rType");
+	room.innerHTML=roomType;
+
+	aminities1=locker.value;
+	aminities2=ac.value;
+
+	aminities=document.getElementById("dAminities");
+	aminities.innerHTML=""+aminities1;
+
+	total=document.getElementById("dTotal");
+	total.innerHTML="&#8377; "+cost;
+
+	advance=document.getElementById("txtAdvance").value;
+	dAdvance=document.getElementById("dAdvance");
+	dAdvance.innerHTML="&#8377; "+advance;
+
+	due=cost-advance;
+
+	balance=document.getElementById("dBalance");
+	balance.innerHTML="&#8377; " +due;
+
+           confirmation=document.getElementById("confirmation");
+           confirmation.style.display="block";
+      }
+
+      function CancelHotel()
+      {
+           start.style.display="block";
+           confirmation.style.display="none";
+      }
+
+</script>
+</head>
+<body bgcolor="gray" onload="startTime()">
+
+ <div align="center"> <font color="white">
+   <table align="center" bgcolor="black" width="1324">
+      <tr>
+         <td align="left"> &nbspHello !!! Welcome to Hotel Sitara...... </td>
+         <td align="right" id="time"> </td>
+      </tr>
+   </table>
+ </font>
+ </div>
+
+ <form>
+     <font size="5" color="yellow">
+     <div width="1320" align="center">
+           <img src="Hotel.jpg" width="1320" height="300" border="2">
+     </div>
+
+
+   <div id="start" align="center" style="display:block">
+     <table align="center" border="box" bgcolor="black" width="1325">  
+         <tr> <td colspan="2" align="center" bgcolor="brown"> Please, Fill the details for Hotel Booking............... </td> </tr>    
+         <tr>
+             <td colspan="2" align="center">
+                 <table>
+                   <tr>
+                        <td colspan="3" align="center" bgcolor="blue"> * Customer Info </td>
+                     </tr>
+                   <tr>
+                        <td> Your Name </td>
+                        <td width="50" align="center"> : </td>
+                        <td> <input type="text" id="txtName" size="40">
+                    </tr>
+                   <tr>
+                        <td> Email </td>
+                        <td width="50" align="center"> : </td>
+                        <td> <input type="email" id="txtEmail" size="40">
+                    </tr>
+                   <tr>
+                        <td> Mobile No. </td>
+                        <td width="50" align="center"> : </td>
+                        <td> <input type="text" id="txtMob" size="40">
+                    </tr>
+                    <tr>
+                        <td> Check in Date </td>
+                        <td width="50" align="center"> : </td>
+                        <td> <input type="date" id="date">
+                    </tr>
+                  </table>
+              </td>
+         </tr>
+
+         <tr>
+             <td colspan="2" align="center">
+	<table>
+                       <tr>
+                           <td colspan="3" align="center" bgcolor="blue" width="1320"> * Select Room </td>
+                       </tr>
+
+	    <tr>
+	        <td align="center">
+	             <img src="deluxe.jpg" width="433" height="300" align="center">
+	             <br>
+                                <input type="radio" id="optDeluxe" name="room" value="Deluxe"> Deluxe Room (&#8377; 2500/day)
+	        </td>
+
+	        <td align="center">
+	             <img src="superdeluxe.jpg" width="433" height="300" align="center">
+	             <br>
+                                <input type="radio" id="optSDeluxe" name="room" value="SDeluxe"> Super Deluxe Room (&#8377; 3300/day)
+	        </td>
+
+	        <td align="center">
+	             <img src="suite.jpg" width="433" height="300" align="center">
+	             <br>
+                                <input type="radio" id="optSuite" name="room" value="Suite"> Suite Room (&#8377; 4000/day)
+	        </td>
+	    </tr>
+                 </table>
+             </td>
+         </tr>
+
+         <tr height="50">
+                <td colspan="2" align="center" bgcolor="blue">
+	   * Total No. of Days &nbsp&nbsp : &nbsp&nbsp <input type="number" value="1" min="1" id="txtDuration">                  	      
+                </td>
+         </tr>
+
+         <tr>
+            <td colspan="2" align="center">
+                <table>
+	<tr>
+	    <td colspan="2" align="center" bgcolor="blue"> Aminities </td>
+	</tr>
+	<tr>
+	     <td align="center" width="350"> <img src="locker.jpg" width="300" height="200">
+	           <br>
+                              <input type="checkbox" id="optLocker" name="locker"> Locker (&#8377; 200/day)
+             	     </td>
+
+	     <td align="center" width="350"> <img src="ac.jpg" width="300" height="200">
+	           <br>
+                              <input type="checkbox" id="optAc" name="ac"> A/C (&#8377; 500/day)
+             	     </td>
+	</tr>
+                </table>
+            </td>
+         </tr>
+
+         <tr>
+            <td colspan="2" align="center" bgcolor="blue">
+                <table>
+                     <caption> * Advance </caption>
+                     <tr>
+                         <td width="250"> Advance Amount &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : </td>
+                         <td> <input type="text" id="txtAdvance"> <font size="3"> * required </font> </td>
+                     </tr>
+                </table>
+            </td>
+         </tr>
+
+         <tr height="40">
+             <td colspan="2" align="center" bgcolor="green">
+	<input type="button" value="Book Hotel" onclick="BookHotel()">
+             </td>
+         </tr>
+
+     </table>
+     </div>
+
+     <div id="confirmation" style="display:none">
+           <table align="center" bgcolor="red" width="600">
+           <tr>
+                <td colspan="2" align="center" bgcolor="blue">  SUMMARY </td>
+           </tr>
+           <tr>
+                <td width="190"> &nbsp Name </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="dName"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="190"> &nbsp Email </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="dEmail"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="190"> &nbsp Mobile </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="dMob"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="200"> &nbsp Check in Date </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="dDate"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="200"> &nbsp No. of Days </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="dDuration"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="200"> &nbsp Room Type </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="rType"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="200"> &nbsp Aminities </td>
+                <td> &nbsp : &nbsp&nbsp <font color="black"> <span id="dAminities"> </span> </font> </td>
+           </tr>
+           <tr>
+                <td width="200" bgcolor="black"> &nbsp Total Price </td>
+                <td bgcolor="black"> &nbsp : &nbsp&nbsp <span id="dTotal"> </span> </td>
+           </tr>
+           <tr>
+                <td width="200" bgcolor="black"> &nbsp Advance </td>
+                <td bgcolor="black"> &nbsp : &nbsp&nbsp <span id="dAdvance"> </span> </td>
+           </tr>
+           <tr>
+                <td width="200" bgcolor="black"> &nbsp Balance </td>
+                <td bgcolor="black"> &nbsp : &nbsp&nbsp <span id="dBalance"> </span> </td>
+           </tr>
+           <tr>
+              <td colspan="2" align="center">
+                <input type="button" value="Cancel" onclick="CancelHotel()">
+                <input type="button" value="Confirm" onclick="ConfirmHotel()">
+              </td>
+           </tr>
+
+     </div>
+
+  </form>
+</body>
+</html>
